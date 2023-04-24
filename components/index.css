@@ -1,0 +1,15 @@
+html, body {
+    color: white;
+    background-color: black;
+}
+
+html {
+    background-color: black;
+}
+
+
+#topbar {
+    border-color: lightskyblue;
+    border-style: solid;
+
+}
