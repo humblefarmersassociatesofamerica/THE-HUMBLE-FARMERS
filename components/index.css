@@ -1,6 +1,7 @@
 html, body {
     color: white;
     background-color: black;
+    overflow-x: hidden;
 }
 
 html {
@@ -11,5 +12,12 @@ html {
 #topbar {
     border-color: lightskyblue;
     border-style: solid;
+    position: relative;
+    text-align: left;
+    max-width: 100vw;
+    height: 20vh;
+}
 
+#cashdisplay {
+    position: absolute;
 }
