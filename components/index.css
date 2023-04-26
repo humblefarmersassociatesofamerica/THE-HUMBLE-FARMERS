@@ -10,7 +10,7 @@ html {
 
 
 #topbar {
-    border-color: lightskyblue;
+    border-color: #20c20e;
     border-style: solid;
     position: relative;
     text-align: left;
@@ -23,10 +23,50 @@ html {
 }
 
 #leftbar {
-    border-color: lightskyblue;
+    border-color: #20c20e;
     border-style: solid;
     text-align: left;
-    max-width: 50%;
+    max-width: 47.8vw;
     max-height: 100vh;
+    min-width: 400px;
+    width: 49.9vw;
+    min-height:400px;
+    height: 100vh;
     float: left;
+    display: inline;
+    position: absolute;
+
+}
+
+#rightbar {
+    border-color: #20c20e;
+    border-style: solid;
+    text-align: left;
+    max-width: 49.9vw;
+    max-height: 100vh;
+    min-width: 400px;
+    width: 49.9vw;
+    min-height:400px;
+    height: 100vh;
+    float: right;
+    display: inline;
+    position: absolute;
+    right: 0.4vw;  
+}
+
+button {
+    border-style: solid;
+    border-color: lightslategray;
+    color: white;
+    background-color: #00094b;
+    border-radius: 5px;
+    margin:5px;
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;        
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    color:skyblue;
 }
