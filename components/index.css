@@ -18,8 +18,9 @@ html {
     height: 10vh;
 }
 
-#cashdisplay {
-    position: absolute;
+#cashdisplay, #MMdisplay, #MBdisplay{
+    margin: 10px;
+    display: inline;
 }
 
 #leftbar {
