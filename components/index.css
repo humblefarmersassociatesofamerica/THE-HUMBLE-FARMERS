@@ -2,6 +2,7 @@ html, body {
     color: white;
     background-color: black;
     overflow-x: hidden;
+    padding: 0;
 }
 
 html {
@@ -27,32 +28,46 @@ html {
     border-color: #20c20e;
     border-style: solid;
     text-align: left;
-    max-width: 47.8vw;
+    box-sizing: border-box;
+    max-width: 50vw;
     max-height: 100vh;
     min-width: 400px;
-    width: 49.9vw;
     min-height:400px;
     height: 100vh;
+    width: 50%;
     float: left;
     display: inline;
-    position: absolute;
-
+    position: relative;
 }
 
 #rightbar {
     border-color: #20c20e;
     border-style: solid;
     text-align: left;
-    max-width: 49.9vw;
+    box-sizing: border-box;
+    max-width: 50vw;
     max-height: 100vh;
     min-width: 400px;
-    width: 49.9vw;
     min-height:400px;
     height: 100vh;
+    width: 50%;
     float: right;
     display: inline;
+    position: relative;
+    
+}
+
+#messageLog {
+    border-color: #20c20e;
+    border-style: solid;
+    text-align: left;
+    box-sizing: border-box;
     position: absolute;
-    right: 0.4vw;  
+    bottom: 0;
+    height: 25%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 button {
@@ -70,4 +85,10 @@ button {
 
 button:hover {
     color:skyblue;
+}
+
+@media only screen and (max-width: 800px) {
+    #leftbar, #rightbar{
+        min-width: 100%;
+    }
 }
