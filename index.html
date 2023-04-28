@@ -51,20 +51,15 @@
 
 <script>
     function setupTabs() {
+       
+        
 
-        alert("asyhfb");
-
-        document.querySelectorAll("tabs__button").forEach(button => {
+        document.querySelectorAll(".tabs__button").forEach(button => {
             button.addEventListener("click", () => {
                 const sideBar = button.parentElement;
                 const tabsContainer = sideBar.parentElement;
                 const tabNumber = button.dataset.forTab;
                 const tabToActive = tabsContainer.querySelector(`.tabs__content[data-tab="${tabNumber}"]`);
-
-               
-
-
-
 
 
 
@@ -93,7 +88,6 @@
 
 
         <div id="messageLog"></div>
-        <div id="gamebar">bshvbs</div>
     </div>
 </body>
 
