@@ -1,12 +1,10 @@
 /* start of save functions*/
-if(typeof(storage) == "undefined")  { alert("Warning " + " your browser does not support local save, when you close this browser all progress will be lost");}
-setInterval(function() {save()}, 20);
-
 function save() {
     number(localStorage.cashCount) = cash;
     number(localStorage.MysteryMeat) = MM;
     number(localStorage.MoldyBread) = MB;
 }
+setInterval(function() {save();}, 20);
 
 function clearSave() {
     localStorage.clear();
@@ -14,17 +12,17 @@ function clearSave() {
     cash = 0;
     MM = 0;
     MB = 0;
-    alert("ahhhh");
+    alert("Save succsesfully cleared");
  }
 
-if (typeof(storage) !== "undefined" || localStorage.length > 0) {
+window.onload = function() {
+if (typeof(storage) !== "undefined" && localStorage.length > 0) {
     var cash = localStorage.cashCount;
     var MM = localStorage.MysteryMeat;
     var MB = localStorage.MoldyBread;
-    alert("pain");
-}
-else { alert("no save found"); }
-
+    log.unshift("Save Loaded");
+    }
+else { log.unshift("no save found"); }  }
 /* end of save functions*/
 
 
@@ -34,8 +32,7 @@ var MM = 0;
 var MB = 0;
 
 
-
-const log = ["Welcome to insert name here LLLLL"];
+const log = ["Welcome to insert name here LLLLL", typeof(storage)];
 /* end of variables and arrays*/
 
 
@@ -52,13 +49,20 @@ document.getElementById("messageLog").innerHTML = log.join(" <br> ");
 
 
 if(log.length > 30) { log.pop();}
+if(typeof(storage) !== "undefined") {log.unshift(typeof(storage))}
 }
 /* end update stat functions */
 
 
 
 
+
 /* start of the game */
+
+
+
+
+
 function scavenge() {
     const a = Math.floor(Math.random() * 101);
     if(a >= 50) 
