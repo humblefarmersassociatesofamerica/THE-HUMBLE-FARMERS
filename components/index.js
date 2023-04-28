@@ -75,11 +75,16 @@ function scavenge() {
         MB += 1;  
         log.unshift("You Gained 1 Moldy Bun")
     }
-    else if(a >= 0)
+    else if(a >= 1)
     {
         cash += 1;
         log.unshift("Its Your Lucky Day! Gained 1 Cash")
 
+    }
+    else if(a >= 0)
+    {
+        cash -= 1;
+        log.unshift("Your luck ran out :( lose $1")
     }
 }
 
