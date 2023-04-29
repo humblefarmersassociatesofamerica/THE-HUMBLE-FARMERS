@@ -57,82 +57,21 @@ html {
     
 }
 
-.tabs {
-width: 100%;
-Height: 350px;
-box-sizing: border-box;
-border-radius: 3px;
-border-color: #20c20e;
-border-style: solid;
-}
-
-.tabs__sidebar {
-  height: 15%;
-  box-sizing: border-box;
-  border-radius: 3px;
-  border-style: solid;
-  border-color: lightslategray;
-}
-
-.tabs__button {
-    box-sizing: border-box;
-    width: 25%;
-    height: 100%;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 1px;
-    background-color: #00094b;
-    transition-duration: 0.4s;
-    color: white;
-}
-
-.tabs .tabs__sidebar .tabs__button:hover {
-    background-color: purple;
-}
-
-.tabs__content {
-    padding: 10px;
-    display: none;
-}
-
-.tabs__content--active {
-    display: block;
-}
-
-.tabs__content > :first-child {
-    margin: 10px;
-}
 
 
 
 
-#messageLog {
-    border-color: #20c20e;
-    border-style: solid;
-    text-align: left;
-    box-sizing: border-box;
-    position: absolute;
-    bottom: 0;
-    height: 25%;
-    width: 100%;
-    overflow-y: scroll;
-    overflow-x: scroll;
-}
 
-#gamebar {
-    border-color: #20c20e;
-    border-style: solid;
-    text-align: left;
-    box-sizing: border-box;
-    position: absolute;
-    bottom: 0;
-    height: 15%;
-    width: 100%;
-    overflow-y: scroll;
-    overflow-x: scroll;
-}
+
+
+
+
+
+
+
+
+
+
 
 .btnGroup1 {
     border-style: solid;

@@ -6,9 +6,18 @@
   <meta name="viewport" content="width=device-width">
   <title>maple</title>
   <link rel="icon" type="image/x-icon" href="images/pOtAtO.png">
-  <link href="components/index.css" rel="stylesheet" type="text/css" />
-  <script src="components/index.js"></script>
+  <link href="components/css/index.css" rel="stylesheet" type="text/css"/>
+  <link href="components/css/tabs.css" rel="stylesheet" type="text/css"/>
+  <script src="components/javascript/index.js"></script>
+  <script src="components/javascript/tabs.js"></script>
 </head>
+
+
+
+
+
+
+
 
 
 <body>
@@ -33,61 +42,31 @@
 
 <body>
     <div id="rightbar">
-<button class="btnGroup1" onclick="clearSave()">Clear Save</button>
+
 
 <!-- start tabs -->
-<div class="tabs">
-    <div class="tabs__sidebar">
-        <button class="tabs__button" data-for-tab="1">Tab #1</button>
-        <button class="tabs__button" data-for-tab="2">Tab #2</button>
-        <button class="tabs__button" data-for-tab="3">Tab #3</button>
-        <button class="tabs__button" data-for-tab="4">Tab #4</button>
+<div class="tab" onload="startup()">
+    <div class="tabsButtonBar">
+  <button class="tablinks" onclick="openTab(event, 'coreTab1')">Message Log</button>
+  <button class="tablinks" onclick="openTab(event, 'coreTab2')">Save Functions</button>
+  <button class="tablinks" onclick="openTab(event, 'coreTab3')">Tab 3</button>
+  <button class="tablinks" onclick="openTab(event, 'coreTab4')">Tab 4</button>
     </div>
-    <div class="tabs__content tabs__content--active" data-tab="1">w1</div>
-    <div class="tabs__content" data-tab="2">2w</div>
-    <div class="tabs__content" data-tab="3">w3</div>
-    <div class="tabs__content" data-tab="4">4w</div>
+    <div id="coreTab1" class="tabcontent"><div id="messageLog"></div></div>
+    <div id="coreTab2" class="tabcontent"><button class="btnGroup1" onclick="clearSave()">Clear Save</button></div>
+    <div id="coreTab3" class="tabcontent">w3</div>
+    <div id="coreTab4" class="tabcontent">4w</div>
 </div>
 
 <script>
-    function setupTabs() {
-       
-        
 
-        document.querySelectorAll(".tabs__button").forEach(button => {
-            button.addEventListener("click", () => {
-                const sideBar = button.parentElement;
-                const tabsContainer = sideBar.parentElement;
-                const tabNumber = button.dataset.forTab;
-                const tabToActive = tabsContainer.querySelector(`.tabs__content[data-tab="${tabNumber}"]`);
-
-
-
-                sideBar.querySelectorAll(".tabs__button").forEach(button => {   button.classList.remove("tabs__button--active");    });
-
-                tabsContainer.querySelectorAll(".tabs__content").forEach(tab => {   tab.classList.remove("tabs__content--active");  });
-
-                button.classList.add("tabs__button--active");
-                tab.classList.add("tabs__content--active")
-            });
-        });
-    }
-
-
-    document.addEventListener("DOMContentLoaded", () => {
-        setupTabs();
-
-        document.querySelectorAll(".tabs").forEach(tabsContainer => {
-            tabsContainer.querySelector(".tabs__sidebar .tabs__button").click();
-        });
-    });
 </script>
 
 
 
 
 
-        <div id="messageLog"></div>
+        
     </div>
 </body>
 
