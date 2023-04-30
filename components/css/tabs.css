@@ -1,34 +1,48 @@
 
-  .tabcontent {animation: fadeEffect 1s;}
+  .tabcontent, .tabcontent2 {animation: fadeEffect 1s;}
   @keyframes fadeEffect { from {opacity: 0;}    to {opacity: 1;}}
-  .tabsButtonBar button:hover {background-color: purple;}
-  .tabsButtonBar button.active {background-color: darkcyan;}
-  .tabcontent {display: none; text-align: left; box-sizing: border-box; overflow-y: scroll;  overflow-x: scroll;}
+  .tab button:hover {color: purple;}
+  .tab button.active {color: darkcyan;}
+  .tabcontent, .tabcontent2 {display: none; text-align: left; box-sizing: border-box; overflow-y: scroll;  overflow-x: scroll;}
 
 .tab {
 width: 100%;
-Height: 25%;
+Height: 10%;
 box-sizing: border-box;
-border-radius: 3px;
-border-color: #20c20e;
-border-style: solid;
-position: absolute;
-bottom: 0;
+position: relative;
 overflow-y: scroll;  
 overflow-x: scroll;
 }
 
-.tabsButtonBar {
-  height: 15%;
-  box-sizing: border-box;
-  border-radius: 3px;
+
+.tab button {
+    box-sizing: border-box;
+    width: 50%;
+    height: 100%;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 1px;
+    transition-duration: 0.4s;
+    color: white;
+    background-color: Black;
+  }
+  
+
+
+
+
+
+.mainTab {
+  height: 7%;
   border-style: solid;
-  border-color: lightslategray;
+  border-color:#20c20e;
 }
 
-.tabsButtonBar button {
+.mainTab button {
     box-sizing: border-box;
-    width: 25%;
+    width: 12.5%;
     height: 100%;
     float: left;
     border: none;
@@ -38,12 +52,7 @@ overflow-x: scroll;
     background-color: #00094b;
     transition-duration: 0.4s;
     color: white;
-  }
-  
+}
 
-
-
-
-
-
-
+.mainTab button:hover {background-color: purple;}
+.mainTab button.active {background-color: darkcyan;}
