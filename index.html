@@ -47,7 +47,33 @@
 
 
 
-        <button class="btnGroup1" onclick="scavenge()">Scavenge</button>
+        <table id="cashMain" class="ble">
+            <tr class="zeb">
+                <td>Cash</td>
+                <td id="cashStorage">0/0</td>
+                <td id="cashAuto">0/s</td>
+            </tr>
+            <tr id="reasearchMain" class="zeb">
+                <td>Reasearch</td>
+                <td>0/0</td>
+                <td>0/s</td>
+            </tr>
+            <tr class="zeb">
+                <td>Cash</td>
+                <td>0/0</td>
+                <td>0/s</td>
+            </tr>
+            <tr class="zeb">
+                <td>Cash</td>
+                <td>0/0</td>
+                <td>0/s</td>
+            </tr>
+        </table>
+
+
+
+
+        
         <div id="MMdisplay">
             Mystery Meat: 0
         </div>
@@ -67,14 +93,16 @@
         <button class="tablinks" onclick="openTab(event, 'coreTab1')">Home</button>
         <button class="tablinks" onclick="openTab(event, 'coreTab2')">Store</button>
         <button class="tablinks" onclick="openTab(event, 'coreTab3')">Employees</button>
-        <button class="tablinks" onclick="openTab(event, 'coreTab4')">Assembly</button>
-        <button class="tablinks" onclick="openTab(event, 'coreTab5')">Storage</button>
-        <button class="tablinks" onclick="openTab(event, 'coreTab6')">Reasearch</button>
+        <button class="tablinks" onclick="openTab(event, 'coreTab4')">Storage</button>
+        <button class="tablinks" onclick="openTab(event, 'coreTab5')">Reasearch</button>
+        <button class="tablinks" onclick="openTab(event, 'coreTab6')">Genetics</button>
         <button class="tablinks" onclick="openTab(event, 'coreTab7')">Credits</button>
         <button class="tablinks" onclick="openTab(event, 'coreTab8')">Settings</button>    
 </div>
 
-<div id="coreTab1" class="tabcontent">fvdsfb</div>
+<div id="coreTab1" class="tabcontent">
+    <button class="btnGroup1" onclick="scavenge()">Scavenge</button>
+</div>
 <div id="coreTab2" class="tabcontent">fip</div>
 <div id="coreTab3" class="tabcontent">fvdsfb</div>
 <div id="coreTab4" class="tabcontent">fvdsfb</div>

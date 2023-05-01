@@ -56,3 +56,28 @@ overflow-x: scroll;
 
 .mainTab button:hover {background-color: purple;}
 .mainTab button.active {background-color: darkcyan;}
+
+
+
+
+
+.ble {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.zeb:nth-child(even) {
+  background-color: #333;
+}
+
+td {
+  text-align: left;
+  padding: 8px;
+}
+
+
+
+
+#reasearchMain {
+  display: none;
+}
