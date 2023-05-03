@@ -42,14 +42,11 @@ const log = ["Welcome to insert name here LLLLL", typeof(storage)];
 setInterval(function() { updateStats(); }, 20);
 
 function updateStats() {
-document.getElementById("cashdisplay").innerHTML = "Cash: " + cash;
-document.getElementById("MMdisplay").innerHTML = "Mystery Meat: " + MM;
-document.getElementById("MBdisplay").innerHTML = "Moldy Buns: " + MB;
 document.getElementById("messageLog").innerHTML = log.join(" <br> ");
 
 
+
 if(log.length > 30) { log.pop();}
-if(typeof(storage) !== "undefined") {log.unshift(typeof(storage))}
 }
 /* end update stat functions */
 
@@ -73,21 +70,17 @@ function scavenge() {
     else if(a >= 10)
     { 
         MB += 1;  
-        log.unshift("You Gained 1 Moldy Bun")
+        log.unshift("You Gained 1 Moldy Bun");
     }
     else if(a >= 1)
     {
         cash += 1;
-        log.unshift("Its Your Lucky Day! Gained 1 Cash")
-
+        log.unshift("Its Your Lucky Day! Gained 1 Cash");
     }
     else if(a >= 0)
     {
         cash -= 1;
-        log.unshift("Your luck ran out :( lose $1")
+        log.unshift("Your luck ran out :( lose $1");
     }
 }
-
-
-
 
