@@ -84,3 +84,10 @@ function scavenge() {
     }
 }
 
+
+
+
+
+function lul() {
+    document.getElementById("coreTab4").innerHTML = "<h1>" + "NOBODY LOVES YOU" + "</H1>";
+}
