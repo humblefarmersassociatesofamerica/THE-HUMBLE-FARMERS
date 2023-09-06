@@ -3,6 +3,15 @@ function save() {
     number(localStorage.cashCount) = cash;
     number(localStorage.MysteryMeat) = MM;
     number(localStorage.MoldyBread) = MB;
+
+
+
+
+    // Store
+localStorage.setItem("lastname", "Smith");
+
+// Retrieve
+document.getElementById("result").innerHTML = localStorage.getItem("lastname");
 }
 setInterval(function() {save();}, 20);
 
@@ -23,6 +32,8 @@ if (typeof(storage) !== "undefined" && localStorage.length > 0) {
     log.unshift("Save Loaded");
     }
 else { log.unshift("no save found"); }  }
+
+
 /* end of save functions*/
 
 

@@ -44,9 +44,6 @@ html {
     float: left;
     display: inline;
     position: relative;
-    overflow-y: scroll;  
-    overflow-x: scroll;
-    
 }
 
 #leftbar {
@@ -63,8 +60,6 @@ html {
     float: left;
     display: inline;
     position: relative;
-    overflow-y: scroll;  
-    overflow-x: scroll;
     bottom: 0;
     
 }
@@ -83,8 +78,6 @@ html {
     float: right;
     display: inline;
     position: relative;
-    overflow-y: scroll;  
-    overflow-x: scroll;
 }
 
 

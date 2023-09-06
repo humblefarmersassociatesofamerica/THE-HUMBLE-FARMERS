@@ -3,15 +3,13 @@
   @keyframes fadeEffect { from {opacity: 0;}    to {opacity: 1;}}
   .tab button:hover {color: purple;}
   .tab button.active {color: darkcyan;}
-  .tabcontent, .tabcontent2 {display: none; text-align: left; box-sizing: border-box; overflow-y: scroll;  overflow-x: scroll;}
+  .tabcontent, .tabcontent2 {display: none; text-align: left; box-sizing: border-box;}
 
 .tab {
 width: 100%;
 Height: 10%;
 box-sizing: border-box;
 position: relative;
-overflow-y: scroll;  
-overflow-x: scroll;
 }
 
 
@@ -85,4 +83,26 @@ td {
 
 
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+HTML, div, p{
+  overflow: auto;
+}
