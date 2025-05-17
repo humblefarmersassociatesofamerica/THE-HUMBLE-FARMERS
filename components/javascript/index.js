@@ -1,104 +1,88 @@
-/* start of save functions*/
+/* =====================
+   Game State Variables
+   ===================== */
+var cash = 0;              // Game currency
+var MM = 0;                // Mystery Meat count
+var MB = 0;                // Moldy Bread count
+
+/* =====================
+   Save System Functions
+   ===================== */
+/**
+ * Save the current game state to localStorage.
+ */
 function save() {
-    number(localStorage.cashCount) = cash;
-    number(localStorage.MysteryMeat) = MM;
-    number(localStorage.MoldyBread) = MB;
+  localStorage.setItem("cashCount", cash);
+  localStorage.setItem("MysteryMeat", MM);
+  localStorage.setItem("MoldyBread", MB);
 
+  // Example data for demonstration.
+  localStorage.setItem("lastname", "Smith");
 
-
-
-    // Store
-localStorage.setItem("lastname", "Smith");
-
-// Retrieve
-document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+  const resultElem = document.getElementById("result");
+  if (resultElem) {
+    resultElem.innerHTML = localStorage.getItem("lastname");
+  }
 }
-setInterval(function() {save();}, 20);
 
+// Save frequently (adjust the interval as needed).
+setInterval(save, 20);
+
+/**
+ * Clear saved game data and reset game state variables.
+ */
 function clearSave() {
-    localStorage.clear();
-    if(localStorage.length === 0)
-    cash = 0;
-    MM = 0;
-    MB = 0;
-    alert("Save succsesfully cleared");
- }
-
-window.onload = function() {
-if (typeof(storage) !== "undefined" && localStorage.length > 0) {
-    var cash = localStorage.cashCount;
-    var MM = localStorage.MysteryMeat;
-    var MB = localStorage.MoldyBread;
-    log.unshift("Save Loaded");
-    }
-else { log.unshift("no save found"); }  }
-
-
-/* end of save functions*/
-
-
-/* start of variables and arrays*/
-var cash = 0;
-var MM = 0;
-var MB = 0;
-
-
-const log = ["Welcome to insert name here LLLLL", typeof(storage)];
-/* end of variables and arrays*/
-
-
-
-
-/* start update stat functions */
-setInterval(function() { updateStats(); }, 20);
-
-function updateStats() {
-document.getElementById("messageLog").innerHTML = log.join(" <br> ");
-
-
-
-if(log.length > 30) { log.pop();}
+  localStorage.clear();
+  cash = 0;
+  MM = 0;
+  MB = 0;
+  logToConsole("Save successfully cleared");
 }
-/* end update stat functions */
 
+/* =====================
+   Load Save Data on Startup
+   ===================== */
+window.onload = function () {
+  if (localStorage.getItem("cashCount") !== null) {
+    cash = parseFloat(localStorage.getItem("cashCount")) || 0;
+    MM   = parseFloat(localStorage.getItem("MysteryMeat")) || 0;
+    MB   = parseFloat(localStorage.getItem("MoldyBread")) || 0;
+    logToConsole("Save loaded");
+  } else {
+    logToConsole("No save found");
+  }
+};
 
-
-
-
-/* start of the game */
-
-
-
-
-
+/* =====================
+   Game Mechanics Functions
+   ===================== */
+/**
+ * Simulates scavenging with random outcomes.
+ */
 function scavenge() {
-    const a = Math.floor(Math.random() * 101);
-    if(a >= 50) 
-    { 
-        MM += 1;
-        log.unshift("You Gained 1 Mystery Meat");
-    } 
-    else if(a >= 10)
-    { 
-        MB += 1;  
-        log.unshift("You Gained 1 Moldy Bun");
-    }
-    else if(a >= 1)
-    {
-        cash += 1;
-        log.unshift("Its Your Lucky Day! Gained 1 Cash");
-    }
-    else if(a >= 0)
-    {
-        cash -= 1;
-        log.unshift("Your luck ran out :( lose $1");
-    }
+  const a = Math.floor(Math.random() * 101);
+  if (a >= 50) {
+    MM += 1;
+    logToConsole("You gained 1 Mystery Meat");
+  } else if (a >= 10) {
+    MB += 1;
+    logToConsole("You gained 1 Moldy Bun");
+  } else if (a >= 1) {
+    cash += 1;
+    logToConsole("It's your lucky day! Gained 1 Cash");
+  } else if (a >= 0) {
+    cash -= 1;
+    logToConsole("Your luck ran out :( Lose $1");
+  }
 }
 
-
-
-
-
+/**
+ * A simple function to update a tab’s content; for demonstration.
+ */
 function lul() {
-    document.getElementById("coreTab4").innerHTML = "<h1>" + "NOBODY LOVES YOU" + "</H1>";
+  const coreTab4 = document.getElementById("coreTab4");
+  if (coreTab4) {
+    coreTab4.innerHTML = "<h1>NOBODY LOVES YOU</h1>";
+    logToConsole("Storage updated");
+  }
 }

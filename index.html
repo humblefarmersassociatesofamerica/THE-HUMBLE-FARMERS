@@ -1,125 +1,41 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Humble Farming</title>
-  <link rel="icon" type="image/x-icon" href="images/pOtAtO.png">
-  <link href="components/css/index.css" rel="stylesheet" type="text/css"/>
-  <link href="components/css/tabs.css" rel="stylesheet" type="text/css"/>
-  <script src="components/javascript/index.js"></script>
-  <script src="components/javascript/tabs.js"></script>
-</head>
-<body>
-
-
-
-
-
-
-
-
-    
-
-
-
-    <div id="leftbar">
-        <div id="topLeftbar">
-            <div class="tab">
-              <button class="tablinks2" onclick="openTab2(event, 'subTab1')">Message Log</button>
-              <button class="tablinks2" onclick="openTab2(event, 'subTab2')">Quick Guide</button> 
-            </div>
-                <div id="subTab1" class="tabcontent2">
-                   
-                    <div id="messageLog"></div>
-                </div>
-            
-                <div id="subTab2" class="tabcontent2">
-               <h4>Welcome to Bergar, the game where we decided that mispelling burger would be funny!</h4>
-                    <p></p>
-                </div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HFAA Generic Console</title>
+    <link rel="icon" type="image/x-icon" href="images/pOtAtO.png" />
+    <link href="components/css/index.css" rel="stylesheet" type="text/css" />
+    <!-- Load the console command handler -->
+    <script defer src="components/javascript/console.js"></script>
+    <!-- Load game state & mechanics -->
+    <script defer src="components/javascript/index.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Left Panel: Retro Console (25% width) -->
+      <div class="console-panel">
+        <!-- Command input at the top -->
+        <div class="command-input-container">
+          <input
+            type="text"
+            id="consoleCommand"
+            placeholder="Enter command here..."
+          />
+          <button id="submitCommand">Enter</button>
         </div>
+        <div id="consoleLog" class="console-log">
+          <p>> System initializing...</p>
+        </div>
+      </div>
 
-
-
-
-        <table id="zeb" class="ble">
-            <tr>
-                <td>Cash</td>
-                <td id="cashStorage">0</td>
-                <td id="cashAuto">0/s</td>
-            </tr>
-            <tr>
-                <td>Reasearch</td>
-                <td>0</td>
-                <td>0/s</td>
-            </tr>
-            <tr>
-                <td>Cash</td>
-                <td>0/0</td>
-                <td>0/s</td>
-            </tr>
-            <tr>
-                <td>Cash</td>
-                <td>0/0</td>
-                <td>0/s</td>
-            </tr>
-        </table>
+      <!-- Right Panel: Content Display (75% width) -->
+      <div class="content-panel">
+        <p>
+          Welcome user to the HFAA Generic Console Version 1.0.0! Type /? into
+          the console for help.
+        </p>
+      </div>
     </div>
-
-
-
-    <div id="rightbar">
-
-<div class="mainTab">
-        <button class="tablinks" onclick="openTab(event, 'coreTab1')">Home</button>
-        <button class="tablinks" onclick="openTab(event, 'coreTab2')">Store</button>
-        <button class="tablinks" onclick="openTab(event, 'coreTab3')">Employees</button>
-        <button class="tablinks" onclick="openTab(event, 'coreTab4')">Storage</button>
-        <button class="tablinks" onclick="openTab(event, 'coreTab5')">Reasearch</button>
-        <button class="tablinks" onclick="openTab(event, 'coreTab6')">Genetics</button>
-        <button class="tablinks" onclick="openTab(event, 'coreTab7')">Credits</button>
-        <button class="tablinks" onclick="openTab(event, 'coreTab8')">Settings</button>    
-</div>
-
-<div id="coreTab1" class="tabcontent">
-    <button class="btnGroup1" onclick="scavenge()">Scavenge</button>
-
-    <button class="btnGroup1" style="align-items:center;"> woooo </button>
-
-</div>
-<div id="coreTab2" class="tabcontent">
-    <div id="upgradesOuter">
-        
-    </div>
-    <div id="tradeOuter">
-
-    </div>
-</div>
-<div id="coreTab3" class="tabcontent"></div>
-<div id="coreTab4" class="tabcontent">    <button class="btnGroup1" onclick="lul()">GUESS WHAT</button></div>
-<div id="coreTab5" class="tabcontent">
-    <p id="result">
-
-    </p>
-</div>
-<div id="coreTab6" class="tabcontent">fvdsfb</div>
-<div id="coreTab7" class="tabcontent">fvdsfb</div>
-<div id="coreTab8" class="tabcontent">fvdsfb</div>
-
-
-
-
-
-
-
-
-
-        
-    </div> <!-- right bar -->
-
-
-
-</body>
+  </body>
 </html>

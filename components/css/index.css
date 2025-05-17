@@ -1,120 +1,190 @@
-html, body {
-    color: white;
-    background-color: black;
-    overflow-x: hidden;
-    padding: 0;
+/* =====================
+   Global Variables
+   ===================== */
+:root {
+  /* Retro Console styling */
+  --console-bg:    #000;    /* Black background */
+  --console-text:  #0f0;    /* Bright green text */
+
+  /* Content Panel styling (darker blue) */
+  --content-bg:    #434C5E; /* Medium dark blue-gray for main content areas */
+  --text-color:    #D8DEE9; /* Light text for readability */
+
+  /* Common accents */
+  --border-color:  #4C566A;
+  --accent-color:  #A3BE8C;
+  --hover-color:   #8BB174;
 }
 
-html {
-    background-color: black;
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-#topbar {
-    border-color: #20c20e;
-    border-style: solid;
-    position: relative;
-    text-align: left;
-    max-width: 75%;
-    height: 10vh;
-    float: right;
-    box-sizing: border-box;
-    max-height: 10vh;
-    min-width: 400px;
-    min-height: 1vh;
-    width: 75%;
+/* Container holds both panels and occupies the full viewport */
+.container {
+  display: flex;
+  height: 100vh;
 }
 
-#cashdisplay, #MMdisplay, #MBdisplay{
-    margin: 10px;
-    display: inline;
+/* ---------------------
+   Console Panel (Left 25%)
+   --------------------- */
+.console-panel {
+  width: 25%;
+  height: 100%;
+  background-color: var(--console-bg);
+  color: var(--console-text);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
 }
 
-#topLeftbar {
-    border-color: #20c20e;
-    border-style: solid;
-    text-align: left;
-    box-sizing: border-box;
-    max-width: 100%;
-    max-height: 35%;
-    min-width: 1px;
-    min-height: 1px;
-    height: 35%;
-    width: 100%;
-    float: left;
-    display: inline;
-    position: relative;
+/* Command input area at the top */
+.command-input-container {
+  display: flex;
+  margin-bottom: 10px;
 }
 
-#leftbar {
-    border-color: #20c20e;
-    border-style: solid;
-    text-align: left;
-    box-sizing: border-box;
-    max-width: 25%;
-    max-height: 100vh;
-    min-width: 1px;
-    min-height: 100px;
-    height: 100vh;
-    width: 25%;
-    float: left;
-    display: inline;
-    position: relative;
-    bottom: 0;
-    
+.command-input-container input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: #111;
+  color: var(--console-text);
+  font-size: 16px;
+  outline: none;
 }
 
-#rightbar {
-    border-color: #20c20e;
-    border-style: solid;
-    text-align: left;
-    box-sizing: border-box;
-    max-width: 75%;
-    max-height: 100vh;
-    min-width: 400px;
-    min-height:400px;
-    height: 100vh;
-    width: 75%;
-    float: right;
-    display: inline;
-    position: relative;
+.command-input-container button {
+  margin-left: 8px;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--accent-color);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.btnGroup1 {
-    border-style: solid;
-    border-color: lightslategray;
-    color: white;
-    background-color: #00094b;
-    border-radius: 5px;
-    margin:5px;
-    padding: 5px;
-    font-size: 15px;
-    cursor: pointer;        
-    transition-duration: 0.4s;
+.command-input-container button:hover {
+  background-color: var(--hover-color);
 }
 
-.btnGroup1:hover {
-    color:skyblue;
+/* Console log area */
+.console-log {
+  flex: 1;
+  overflow-y: auto;
+  font-size: 14px;
+  padding-right: 5px;
 }
 
-@media only screen and (max-width: 800px) {
-    #leftbar, #rightbar{
-        min-width: 100%;
-    }
+.console-log p {
+  margin-bottom: 5px;
+  word-wrap: break-word;
+}
+
+/* ---------------------
+   Content Panel (Right 75%)
+   --------------------- */
+.content-panel {
+  width: 75%;
+  height: 100%;
+  background-color: var(--content-bg);
+  color: var(--text-color);
+  padding: 20px;
+  overflow-y: auto;
+  font-size: 18px;
+}
+
+/* ---------------------
+   Custom Scrollbar Styles (if desired)
+   --------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--content-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* ---------------------
+   Drone Card Styling (for Drone Tab)
+   --------------------- */
+.drone-card {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.drone-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drone-details {
+  flex: 1;
+}
+
+.drone-details .drone-name {
+  font-weight: bold;
+}
+
+.drone-battery {
+  margin-left: 10px;
+  text-align: right;
+}
+
+.drone-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 20px;
+  background-color: #999;
+  margin-right: 10px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--accent-color);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.start-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--accent-color);
+  color: #fff;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  background-color: var(--hover-color);
 }
