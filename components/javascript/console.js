@@ -49,31 +49,53 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.content-panel').innerHTML = startupContent;
         logMessage("Returned to startup content.");
       // Inside your submitCommand() function in console.js:
-      }  else if (command === "/drone") {
-  // Set the content panel's innerHTML to include a container for drones and a "Buy Drone" button.
+      } else if (command === "/drone") {
+  // Ensure at least one default drone is present before loading the tab
+  if (droneModule.getDrones().length === 0) {
+    droneModule.addDefaultDrone();
+  }
+
+  // Set the content panel's innerHTML to include the drone container and "Buy Drone" button.
   document.querySelector('.content-panel').innerHTML =
     `<div id="droneContainer" style="width:100%; min-height:400px;"></div>
      <button id="buyDroneButton" style="margin-top: 20px; padding: 10px; font-size:16px;">Buy Drone</button>`;
   logMessage("Drone control center activated.");
   
-  // Immediately display any saved drones by calling the drone module's display function.
+  // Immediately display saved drones.
   droneModule.displayDrones();
   
   // Set up the "Buy Drone" button event listener to add a new drone and refresh the display.
   const buyBtn = document.getElementById("buyDroneButton");
   if (buyBtn) {
     buyBtn.addEventListener("click", function() {
-      // Add a new default drone to the stored drones.
       droneModule.addDefaultDrone();
-      // Refresh the drones display.
-      document.getElementById("droneContainer").innerHTML = droneModule.displayDrones();
+      droneModule.displayDrones();
       logMessage("New drone purchased and added.");
-    });
-  }
-}
-
-
-        else {
+    });}} else if (command === "/settings") {
+  // Load the Settings tab into the content panel.
+  document.querySelector('.content-panel').innerHTML = settingsModule.displaySettings();
+  logMessage("Settings tab activated.");
+  
+  // Attach an event listener to the Clear Save button.
+  const clearBtn = document.getElementById("clearSaveButton");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", function() {
+      settingsModule.clearLocalSave();
+      logMessage("Local save data cleared.");
+    });}}  else if (command === "/shop") {
+  // Load the Shop tab content
+  document.querySelector('.content-panel').innerHTML = shopModule.displayShop();
+  logMessage("Shop tab activated.");
+  // Initialize the shop (attach event listener for Buy Drone button)
+  shopModule.initShop();
+  } else if (command === "/storage") {
+  document.querySelector('.content-panel').innerHTML =
+    `<div id="storageDisplay" style="width:100%; min-height:400px; padding:20px;">
+       ${storageModule.displayStorage()}
+     </div>`;
+  logMessage("Storage tab activated.");
+  storageModule.initStorage();
+    }else {
         logMessage("Command not recognized.");
       }
     }

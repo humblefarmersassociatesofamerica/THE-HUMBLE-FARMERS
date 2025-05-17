@@ -9,7 +9,8 @@
       type: "jeff",
       description: "Your trusty companion drone, rusty and beat up, but a good start",
       scavangeTime: 30000, // in milliseconds (30 seconds)
-      battery: "∞/∞"
+      battery: "∞/∞",
+      workType: "scavenge"
     };
   }
 
@@ -52,13 +53,15 @@
     return `
       <div class="drone-card">
         <div class="drone-info">
-          <div class="drone-details">
-            <span class="drone-name">Drone #${index + 1} - ${drone.type}</span><br>
-            <span class="drone-description">${drone.description}</span>
-          </div>
-          <div class="drone-battery">
-            <pre>${drone.battery}</pre>
-          </div>
+          <span class="drone-name">Drone #${index + 1} - ${drone.type}</span>
+          <br>
+          <span class="drone-description">${drone.description}</span>
+        </div>
+        <div class="drone-stats">
+          <div class="stat-item"><strong>Battery:</strong> ${drone.battery}</div>
+          <div class="stat-item"><strong>Time:</strong> ${drone.scavangeTime / 1000}s</div>
+          <div class="stat-item"><strong>Work:</strong> ${drone.workType || "scavenge"}</div>
+          <div class="stat-item"><strong>Timer:</strong> <span class="drone-timer" id="timer-${drone.id}">0/${drone.scavangeTime / 1000}s</span></div>
         </div>
         <div class="drone-controls">
           <div class="progress-bar">
@@ -71,7 +74,8 @@
   }
 
   /**
-   * Renders all drones in the drone container. Must be placed inside an element with ID "droneContainer".
+   * Renders all drones in the drone container.
+   * Must be placed inside an element with ID "droneContainer".
    */
   function displayDrones() {
     const droneContainer = document.getElementById("droneContainer");
@@ -83,10 +87,10 @@
     });
     droneContainer.innerHTML = html;
 
-    // Attach event listeners for all start buttons to start the drone task.
+    // Attach event listeners for all start buttons.
     const startButtons = droneContainer.querySelectorAll(".start-button");
     startButtons.forEach(button => {
-      button.addEventListener("click", function() {
+      button.addEventListener("click", function () {
         const droneId = this.getAttribute("data-drone-id");
         const duration = parseInt(this.getAttribute("data-duration"));
         const progressElem = document.getElementById("progress-" + droneId);
@@ -98,26 +102,42 @@
   }
 
   /**
-   * Starts a drone task, updates the progress bar over the given duration,
-   * and logs a debug message when finished.
+   * Starts a drone task, updating both the progress bar and timer over the given duration.
+   * When complete, logs a debug message including the drone's work type.
    * @param {string} droneId - The unique ID of the drone.
    * @param {HTMLElement} progressElem - The progress-fill element.
    * @param {number} duration - Duration of the task in milliseconds.
    */
   function startDroneTask(droneId, progressElem, duration) {
-    let elapsed = 0;
-    const intervalTime = 100; // update every 100ms
-    progressElem.style.width = "0%";
-    const intervalId = setInterval(() => {
-      elapsed += intervalTime;
-      let percent = Math.min((elapsed / duration) * 100, 100);
-      progressElem.style.width = percent + "%";
-      if (elapsed >= duration) {
-        clearInterval(intervalId);
-        console.log("Drone " + droneId + " finished its task (scavenge).");
-      }
-    }, intervalTime);
+  let elapsed = 0;
+  const intervalTime = 100;
+  progressElem.style.width = "0%";
+  const timerElem = document.getElementById("timer-" + droneId);
+  if (timerElem) {
+    timerElem.textContent = `0/${duration / 1000}s`;
   }
+
+  const intervalId = setInterval(() => {
+    elapsed += intervalTime;
+    let percent = Math.min((elapsed / duration) * 100, 100);
+    progressElem.style.width = percent + "%";
+    if (timerElem) {
+      timerElem.textContent = `${Math.floor(elapsed / 1000)}/${duration / 1000}s`;
+    }
+
+    if (elapsed >= duration) {
+      clearInterval(intervalId);
+      const foundDrone = droneModule.getDrones().find(d => d.id === droneId);
+      const workType = foundDrone ? foundDrone.workType : "scavenge";
+
+      if (workType === "scavenge") {
+        storageModule.addMaterial("scrap", 10); // Drone scavenges and adds 10 scrap
+        console.log("Drone " + droneId + " finished scavenging. +10 Scrap added.");
+      }
+    }
+  }, intervalTime);
+}
+
 
   // Expose the drone module API.
   window.droneModule = {
