@@ -1,72 +1,55 @@
 (function () {
   /**
    * Retrieves stored materials from local storage.
-   * Returns an object containing material amounts (cash, scrap).
+   * Defaults: cash: 0, scrap: 0, stone: 0.
    */
   function getStoredMaterials() {
     const stored = localStorage.getItem("storageMaterials");
-    return stored ? JSON.parse(stored) : { cash: 0, scrap: 0 };
+    return stored ? JSON.parse(stored) : { cash: 0, scrap: 0, stone: 0 };
   }
 
   /**
-   * Saves updated material amounts to local storage.
-   * @param {Object} materials - The materials object.
+   * Saves material amounts to local storage.
    */
   function saveStoredMaterials(materials) {
     localStorage.setItem("storageMaterials", JSON.stringify(materials));
   }
 
   /**
-   * Adds a specified amount of cash or scrap.
-   * @param {string} material - "cash" or "scrap".
-   * @param {number} amount - Amount to add.
+   * Adds a specified amount of a material.
+   * For scrap and stone, amounts are capped at 100 (debug cap).
+   * Cash is uncapped.
    */
   function addMaterial(material, amount) {
     const materials = getStoredMaterials();
-    if (materials.hasOwnProperty(material)) {
-      materials[material] += amount;
-      saveStoredMaterials(materials);
+    if (material === "cash") {
+      materials.cash += amount;
+    } else if (material === "scrap" || material === "stone") {
+      materials[material] = Math.min(materials[material] + amount, 100);
     }
+    saveStoredMaterials(materials);
   }
 
   /**
-   * Returns the HTML for the Storage tab.
-   * This displays current material amounts and includes a debug button.
-   * @returns {string} HTML content for the Storage tab.
+   * Returns HTML for the Storage tab showing current materials.
    */
   function displayStorage() {
     const materials = getStoredMaterials();
     return `
       <div id="storageContainer" style="padding:20px;">
         <h2>Storage</h2>
-        <p>Here are your current materials:</p>
-        <div class="storage-item">
-          <strong>Cash:</strong> ${materials.cash}
-        </div>
-        <div class="storage-item">
-          <strong>Scrap:</strong> ${materials.scrap}
-        </div>
-        <button id="debugAddScrap" style="margin-top:20px; padding:10px; font-size:16px;">Add Scrap (Debug)</button>
+        <p>Current Materials:</p>
+        <div class="storage-item"><strong>Cash:</strong> ${materials.cash}</div>
+        <div class="storage-item"><strong>Scrap:</strong> ${materials.scrap}</div>
+        <div class="storage-item"><strong>Stone:</strong> ${materials.stone}</div>
       </div>
     `;
   }
 
-  /**
-   * Initializes the Storage tab.
-   * Attaches an event listener to the debug button (adds scrap).
-   */
   function initStorage() {
-    const debugBtn = document.getElementById("debugAddScrap");
-    if (debugBtn) {
-      debugBtn.addEventListener("click", function () {
-        addMaterial("scrap", 5);
-        document.getElementById("storageContainer").innerHTML = displayStorage();
-        initStorage(); // Re-attach listener after refresh
-      });
-    }
+    // (If you add buttons or dynamic behavior later, initialize here.)
   }
 
-  // Expose the storage module API.
   window.storageModule = {
     getStoredMaterials: getStoredMaterials,
     saveStoredMaterials: saveStoredMaterials,

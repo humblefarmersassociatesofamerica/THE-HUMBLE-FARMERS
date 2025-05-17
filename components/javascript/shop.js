@@ -1,35 +1,46 @@
 (function () {
   /**
-   * Returns the HTML for the Shop tab.
-   * This contains a header and a Buy Drone button.
-   * @returns {string} HTML string for the shop tab.
+   * Returns the HTML for the Shop tab with a table layout.
    */
   function displayShop() {
     return `
       <div id="shopContainer" style="padding:20px;">
         <h2>Shop</h2>
-        <p>Welcome to the shop! Purchase drones below.</p>
-        <button id="buyDroneButtonShop" style="padding:10px; font-size:16px;">Buy Drone</button>
+        <table style="width:100%; border-collapse: collapse;">
+          <thead>
+            <tr>
+              <th style="border-bottom:1px solid var(--border-color); text-align:left;">Item</th>
+              <th style="border-bottom:1px solid var(--border-color); text-align:left;">Description</th>
+              <th style="border-bottom:1px solid var(--border-color); text-align:left;">Cost</th>
+              <th style="border-bottom:1px solid var(--border-color); text-align:left;">Buy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Drill Drone</td>
+              <td>A robust drill drone built to extract stone from the wastelands.</td>
+              <td>$1000</td>
+              <td><button id="buyDrillDroneButton" style="padding:8px 12px;">Buy Drill Drone</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     `;
   }
 
   /**
-   * Initializes the shop tab.
-   * Attaches an event listener to the Buy Drone button so that when clicked,
-   * it calls the drone module to add a new default drone.
+   * Initializes the shop tab by attaching the event listener.
    */
   function initShop() {
-    const buyBtn = document.getElementById("buyDroneButtonShop");
-    if (buyBtn) {
-      buyBtn.addEventListener("click", function () {
-        // Call the drone module to add a new default drone.
-        droneModule.addDefaultDrone();
+    const btn = document.getElementById("buyDrillDroneButton");
+    if (btn) {
+      btn.addEventListener("click", function () {
+        droneModule.addDrillDrone();
+        alert("Drill Drone purchased!");
       });
     }
   }
 
-  // Expose the shop module API.
   window.shopModule = {
     displayShop: displayShop,
     initShop: initShop

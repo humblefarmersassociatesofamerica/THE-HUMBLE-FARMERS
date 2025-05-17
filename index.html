@@ -6,13 +6,14 @@
     <title>HFAA Generic Console</title>
     <link rel="icon" type="image/x-icon" href="images/pOtAtO.png" />
     <link href="components/css/index.css" rel="stylesheet" type="text/css" />
+    <!-- IMPORTANT: Load modules in proper order -->
     <script defer src="components/javascript/settings.js"></script>
     <script defer src="components/javascript/drone.js"></script>
     <script defer src="components/javascript/shop.js"></script>
     <script defer src="components/javascript/storage.js"></script>
+    <script defer src="components/javascript/debug.js"></script>
     <script defer src="components/javascript/console.js"></script>
     <script defer src="components/javascript/index.js"></script>
-    
   </head>
   <body>
     <div class="container">
@@ -35,8 +36,7 @@
       <!-- Right Panel: Content Display (75% width) -->
       <div class="content-panel">
         <p>
-          Welcome user to the HFAA Generic Console Version 1.0.0! Type /? into
-          the console for help.
+          Welcome to HFAA Generic Console Version 1.0.0! Type /? for help.
         </p>
       </div>
     </div>
