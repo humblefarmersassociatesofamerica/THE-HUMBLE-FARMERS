@@ -4,9 +4,9 @@
    */
   function displayShop() {
     return `
-      <div id="shopContainer" style="padding:20px;">
+      <div id="shopContainer" class="shop-container" style="padding:20px;">
         <h2>Shop</h2>
-        <table style="width:100%; border-collapse: collapse;">
+        <table class="shop-table" style="width:100%; border-collapse: collapse;">
           <thead>
             <tr>
               <th style="border-bottom:1px solid var(--border-color); text-align:left;">Item</th>
@@ -20,7 +20,11 @@
               <td>Drill Drone</td>
               <td>A robust drill drone built to extract stone from the wastelands.</td>
               <td>$1000</td>
-              <td><button id="buyDrillDroneButton" style="padding:8px 12px;">Buy Drill Drone</button></td>
+              <td>
+                <button id="buyDrillDroneButton" class="shop-button" style="padding:8px 12px;">
+                  Buy Drill Drone
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -29,20 +33,20 @@
   }
 
   /**
-   * Initializes the shop tab by attaching the event listener.
+   * Initializes the Shop tab by attaching the event listener.
    */
   function initShop() {
     const btn = document.getElementById("buyDrillDroneButton");
     if (btn) {
-      btn.addEventListener("click", function () {
+      btn.addEventListener("click", () => {
         droneModule.addDrillDrone();
-        alert("Drill Drone purchased!");
+        console.log("Drill Drone purchased.");
       });
     }
   }
 
   window.shopModule = {
-    displayShop: displayShop,
-    initShop: initShop
+    displayShop,
+    initShop
   };
 })();

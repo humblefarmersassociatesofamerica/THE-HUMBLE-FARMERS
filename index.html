@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>HFAA Generic Console</title>
     <link rel="icon" type="image/x-icon" href="images/pOtAtO.png" />
-    <link href="components/css/index.css" rel="stylesheet" type="text/css" />
-    <!-- IMPORTANT: Load modules in proper order -->
+    <link rel="stylesheet" href="components/css/index.css" />
+    <!-- Load modules in proper order -->
     <script defer src="components/javascript/settings.js"></script>
     <script defer src="components/javascript/drone.js"></script>
     <script defer src="components/javascript/shop.js"></script>
     <script defer src="components/javascript/storage.js"></script>
+    <script defer src="components/javascript/dome.js"></script>
     <script defer src="components/javascript/debug.js"></script>
     <script defer src="components/javascript/console.js"></script>
     <script defer src="components/javascript/index.js"></script>
@@ -19,25 +20,18 @@
     <div class="container">
       <!-- Left Panel: Retro Console (25% width) -->
       <div class="console-panel">
-        <!-- Command input at the top -->
+        <!-- Command input -->
         <div class="command-input-container">
-          <input
-            type="text"
-            id="consoleCommand"
-            placeholder="Enter command here..."
-          />
+          <input type="text" id="consoleCommand" placeholder="Enter command here..." />
           <button id="submitCommand">Enter</button>
         </div>
         <div id="consoleLog" class="console-log">
           <p>> System initializing...</p>
         </div>
       </div>
-
       <!-- Right Panel: Content Display (75% width) -->
       <div class="content-panel">
-        <p>
-          Welcome to HFAA Generic Console Version 1.0.0! Type /? for help.
-        </p>
+        <p>Welcome to HFAA Generic Console Version 1.0.0! Type /? for help.</p>
       </div>
     </div>
   </body>

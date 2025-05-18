@@ -1,11 +1,14 @@
 (function () {
   /**
    * Clears all local save data after confirmation.
+   * Instead of using alert() to notify the user,
+   * you could call console.log() if you prefer.
    */
   function clearLocalSave() {
     if (confirm("Are you sure you want to clear all local save data? This action cannot be undone.")) {
       localStorage.clear();
-      alert("Local save data has been cleared.");
+      console.log("Local save data has been cleared.");
+      // Optionally, you could update the Settings tab area if needed
     }
   }
 
